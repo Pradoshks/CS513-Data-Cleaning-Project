@@ -1,0 +1,255 @@
+Queries :
+
+Integrity Constraint Check : 
+1)	Criteria: id shouldn’t have dupliacte or NULL Values on menu table.
+
+a)	Table : menu
+Query:
+SELECT id, COUNT(id) AS cnt_id
+  FROM menu
+  GROUP BY id
+  HAVING COUNT(id) > 1;
+
+Resut : 0 Records
+Action : No action.
+
+ 
+b)	NULL Value Check:
+Query:
+SELECT * FROM menu
+WHERE id IS NULL;
+
+Result: 0 such records.
+Action : No action.
+
+2)	Criteria: id shouldn’t have dupliacte or NULL Values on menuitem table.
+
+a)	Table : menuitem
+Query:
+SELECT id, COUNT(id) AS cnt_id
+  FROM menu
+  GROUP BY id
+  HAVING COUNT(id) > 1;
+
+Resut : 0 Records
+Action : No action.
+
+
+ 
+b)	NULL Value Check:
+Query:
+SELECT * FROM menuitem
+WHERE id IS NULL;
+
+Result: 0 such records.
+Action : No action.
+
+3)	Criteria: id shouldn’t have dupliacte or NULL Values on dish table.
+a)	Table : menuitem
+Query:
+SELECT id, COUNT(id) AS cnt_id
+  FROM dish
+  GROUP BY id
+  HAVING COUNT(id) > 1;
+
+Resut : 0 Records
+Action : No action.
+
+b)	NULL Value Check:
+Query:
+SELECT * FROM dish
+WHERE id IS NULL;
+
+Result: 0 such records.
+Action : No action.
+
+
+4)	Criteria: id shouldn’t have dupliacte or NULL Values on menupage table.
+a)	Table : menuitem
+Query:
+SELECT id, COUNT(id) AS cnt_id
+  FROM menupage
+  GROUP BY id
+  HAVING COUNT(id) > 1;
+
+Resut : 0 Records
+Action : No action.
+
+ 
+b)	NULL Value Check:
+Query:
+SELECT * FROM menupage
+WHERE id IS NULL;
+
+Result: 0 such records.
+Action : No action.
+
+Cleaning Using SQL:
+1)	Table : menu 
+a.	Identify and delete irrelevant records.
+Query:
+SELECT COUNT(*)
+FROM menu
+WHERE name = ‘’
+AND sponsor= ‘’;
+Result: 1619
+
+Obervation : 1680 records where both name and sponsor are blank don’t have most of its other columns not populated. So, all such recors were deleted since they don’t hold enough data for those records to be relevant.
+Action : Delete such records.
+Query:
+DELETE FROM menu
+WHERE name = ‘’
+AND sponsor= ‘’;
+
+Result: 1619 records were deleted.
+
+b.	Default columns where most of the data are missing so that they can be ised for categorizing.
+Query: 
+SELECT COUNT(*)
+FROM MENU 
+WHERE NAME='';
+Result: 12729
+Action : Default such records with value as ‘Unavailable’.
+
+Query:
+UPDATE menu
+SET name = 'Unavialble'
+WHERE name = '';    
+Result: 12729 records were updated.
+
+c.	Default name and sponsor coumn where most of the data are like  (Restaurant Andor Location Not Given./ Restaurant Name Andor Location Not Given/ Not Given) so that they can be used for categorizing
+Query:
+SELECT COUNT(*) FROM menu
+WHERE name LIKE '%NOT GIVEN%'
+Result: 138
+Action : Default such records with value as ‘Unavailable’.
+
+Query:
+UPDATE menu
+SET name = 'Unavialble'
+WHERE name LIKE '%NOT GIVEN%';
+Result: 138 records were updated.
+
+Query:
+SELECT COUNT(*) FROM menu
+WHERE sponsor LIKE '%NOT GIVEN%';
+Result: 216
+
+Query:
+UPDATE menu
+SET sponsor = 'Unavialble'
+WHERE sponsor LIKE '%NOT GIVEN%';
+Result: 216 records were updated.
+ 
+
+
+
+2)	Table : dish
+a.	Identify and delete irrelevant records.
+Query:
+SELECT count(*) FROM dish
+WHERE times_appeared = '';
+Result: 0
+
+Query:
+SELECT count(*) FROM dish
+WHERE menus_appeared = '';
+Result: 0
+
+Action : None. No such records were found.
+
+b.	Obervation : 1680 records where both name and sponsor are blank don’t have most of its other columns not populated. So, all such recors were deleted since they don’t hold enough data for those records to be relevant.
+Query:
+SELECT COUNT(*) FROM menu
+WHERE name = ‘’
+AND sponsor= ‘’;
+Result: 1680 records found
+Action : Delete such records.
+
+Query:
+DELETE FROM menu
+WHERE name = ‘’
+AND sponsor= ‘’;
+Result: 1680 records were deleted.
+
+c.	Last appeared_date had years beoyond 2021.
+Query: 
+SELECT COUT+NT(*) FROM dish
+WHERE last_appeared > '2021'; 
+Result: 180
+
+Action : Delete such records.
+DELETE FROM dish
+WHERE last_appeared > '2021'; 
+Result: 180 records were deleted.
+
+d.	Last appeared_date had years beoyond 2021.
+Query: 
+SELECT COUT+NT(*) FROM dish
+WHERE last_appeared > '2021'; 
+Result: 180
+Action : Delete such records.
+DELETE FROM dish
+WHERE last_appeared > '2021'; 
+Result: 180 records were deleted.
+
+e.	highest_price column contains a lot spaces. Update them to 0.
+Query : 
+SELECT * FROM dish
+WHERE highest_price = ' '
+Result: 29,098
+Action : Default the spaces to 0.
+
+Query : 
+UPDATE dish 
+SET highest_price = 0
+WHERE highest_price = '';
+Result: 29,098 records updated.
+
+f.	Check the same for lowest_price.
+Query : 
+SELECT * FROM dish
+WHERE lowest_price = ' '
+Result: 0
+Action : None.
+
+Query : 
+UPDATE dish 
+SET lowest_price = 0
+WHERE highest_price = '';
+Result: 446,259 records updated.
+
+
+
+3)	Table : menuitem
+
+a.	high_price column contains a lot spaces. Update them to 0.
+Query : 
+SELECT * FROM menuitem
+WHERE high_price = ' '
+Result: 1,242,800
+Action : Default the spaces to 0.
+
+Query : 
+UPDATE menuitem 
+SET high_price = 0
+WHERE high_price = '';
+Result: 1,242,800 records updated.
+
+b.	price column contains a lot spaces. Update them to 0.
+Query : 
+SELECT * FROM menuitem
+WHERE price = ' '
+Result: 446,259
+Action : Default the spaces to 0.
+
+Query : 
+UPDATE menuitem 
+SET price = 0
+WHERE price = '';
+Result: 446,259 records updated.
+
+4)	Table : menupage
+No relevant data found to be cleaned as such.
+
+

@@ -1,0 +1,64 @@
+Table Definitions/ Schema:
+Table : menu
+CREATE TABLE menu (
+id BIGINT PRIMARY KEY
+NOT NULL,
+name TEXT,
+sponsor TEXT,
+event TEXT,
+venue TEXT,
+place TEXT,
+physical_desc TEXT,
+occasion TEXT,
+notes TEXT,
+call_number TEXT,
+date DATE,
+location TEXT,
+currency TEXT,
+currency_symbol TEXT,
+status TEXT,
+page_count INTEGER,
+dish_count INTEGER
+);
+
+
+Table : menuitem
+CREATE TABLE menuitem (
+id BIGINT PRIMARY KEY
+NOT NULL,
+menu_page_id BIGINT REFERENCES menupage (id),
+price DOUBLE,
+high_price DOUBLE,
+dish_id BIGINT REFERENCES dish (id),
+created_at DATETIME,
+updated_at DATETIME,
+xpos DOUBLE,
+ypos DOUBLE
+);
+
+
+Table : menupage
+CREATE TABLE menupage (
+id BIGINT PRIMARY KEY
+NOT NULL,
+menu_id BIGINT REFERENCES menu (id),
+page_number INTEGER,
+image_id INTEGER,
+full_height INTEGER,
+full_width INTEGER,
+uuid TEXT
+);
+
+
+Table : dish
+CREATE TABLE dish (
+id BIGINT PRIMARY KEY
+NOT NULL,
+name TEXT,
+menus_appeared INTEGER,
+times_appeared INTEGER,
+first_appeared DATETIME,
+last_appeared DATETIME,
+lowest_price DOUBLE,
+highest_price DOUBLE
+);

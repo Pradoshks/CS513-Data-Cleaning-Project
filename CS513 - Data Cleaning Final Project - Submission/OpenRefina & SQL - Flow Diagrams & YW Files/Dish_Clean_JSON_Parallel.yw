@@ -1,0 +1,167 @@
+#@begin Parallel_OR #@desc Parallel OpenRefine Workflow
+#@param expression:value.toString()
+#@param expression:value.toTitlecase()
+#@param expression:grel:value.replace(/"/,'')
+#@param expression:grel:value.replace(/\\-/,'')
+#@param expression:grel:value.replace(/\\*/,'')
+#@param expression:grel:value.replace(/\\[/,'').replace(/\\]/,'')
+#@param expression:value.toDate()
+#@param expression:grel:value.replace(/^\\,+/,'')
+#@param expression:value.trim()
+#@param expression:grel:value.replace(/]/,'')
+#@param expression:grel:toString(toDate(value),"yyyy")
+#@param expression:grel:value.replace(/\\?/,'')
+#@param expression:value.toNumber()
+#@param expression:value.replace(/\\s+/,'_')
+#@in name_5
+#@in highest_price
+#@in name_6
+#@in id
+#@in first_appeared_1
+#@in times_appeared
+#@in name_10
+#@in description
+#@in name_3
+#@in name_2
+#@in last_appeared
+#@in id_2
+#@in name
+#@in first_appeared
+#@in name_1
+#@in name_4
+#@in id_1
+#@in lowest_price
+#@in menus_appeared
+#@in name_7
+#@in name_9
+#@in name_8
+#@in last_appeared_1
+#@out CleanData
+#@begin core/text-transform0 #@desc Text transform on cells in column name using expression value.trim()
+#@param expression:value.trim()
+#@in name
+#@out name_1
+#@end core/text-transform0
+#@begin core/text-transform1 #@desc Text transform on cells in column name using expression value.replace(/\\s+/,' ')
+#@param expression:value.replace(/\\s+/,'_')
+#@in name_1
+#@out name_2
+#@end core/text-transform1
+#@begin core/text-transform2 #@desc Text transform on cells in column name using expression grel:value.replace(/\"/,'')
+#@param expression:grel:value.replace(/"/,'')
+#@in name_2
+#@out name_3
+#@end core/text-transform2
+#@begin core/text-transform3 #@desc Text transform on cells in column name using expression grel:value.replace(/\\[/,'').replace(/\\]/,'')
+#@param expression:grel:value.replace(/\\[/,'').replace(/\\]/,'')
+#@in name_3
+#@out name_4
+#@end core/text-transform3
+#@begin core/text-transform4 #@desc Text transform on cells in column name using expression grel:value.replace(/\\*/,'')
+#@param expression:grel:value.replace(/\\*/,'')
+#@in name_4
+#@out name_5
+#@end core/text-transform4
+#@begin core/text-transform5 #@desc Text transform on cells in column name using expression grel:value.replace(/^\\,+/,'')
+#@param expression:grel:value.replace(/^\\,+/,'')
+#@in name_5
+#@out name_6
+#@end core/text-transform5
+#@begin core/text-transform6 #@desc Text transform on cells in column name using expression grel:value.replace(/]/,'')
+#@param expression:grel:value.replace(/]/,'')
+#@in name_6
+#@out name_7
+#@end core/text-transform6
+#@begin core/text-transform7 #@desc Text transform on cells in column lowest_price using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in lowest_price
+#@out lowest_price_1
+#@end core/text-transform7
+#@begin core/text-transform8 #@desc Text transform on cells in column highest_price using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in highest_price
+#@out highest_price_1
+#@end core/text-transform8
+#@begin core/text-transform9 #@desc Text transform on cells in column last_appeared using expression value.toDate()
+#@param expression:value.toDate()
+#@in last_appeared
+#@out last_appeared_1
+#@end core/text-transform9
+#@begin core/text-transform10 #@desc Text transform on cells in column last_appeared using expression grel:toString(toDate(value),\"yyyy\")
+#@param expression:grel:toString(toDate(value),"yyyy")
+#@in last_appeared_1
+#@out last_appeared_2
+#@end core/text-transform10
+#@begin core/text-transform11 #@desc Text transform on cells in column first_appeared using expression value.toDate()
+#@param expression:value.toDate()
+#@in first_appeared
+#@out first_appeared_1
+#@end core/text-transform11
+#@begin core/text-transform12 #@desc Text transform on cells in column first_appeared using expression grel:toString(toDate(value),\"yyyy\")
+#@param expression:grel:toString(toDate(value),"yyyy")
+#@in first_appeared_1
+#@out first_appeared_2
+#@end core/text-transform12
+#@begin core/text-transform13 #@desc Text transform on cells in column times_appeared using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in times_appeared
+#@out times_appeared_1
+#@end core/text-transform13
+#@begin core/text-transform14 #@desc Text transform on cells in column menus_appeared using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in menus_appeared
+#@out menus_appeared_1
+#@end core/text-transform14
+#@begin core/column-removal15 #@desc Remove column description
+#@in description
+#@out remove-description
+#@end core/column-removal15
+#@begin core/text-transform16 #@desc Text transform on cells in column name using expression value.toString()
+#@param expression:value.toString()
+#@in name_7
+#@out name_8
+#@end core/text-transform16
+#@begin core/text-transform17 #@desc Text transform on cells in column name using expression grel:value.replace(/\\?/,'')
+#@param expression:grel:value.replace(/\\?/,'')
+#@in name_8
+#@out name_9
+#@end core/text-transform17
+#@begin core/text-transform18 #@desc Text transform on cells in column name using expression value.toTitlecase()
+#@param expression:value.toTitlecase()
+#@in name_9
+#@out name_10
+#@end core/text-transform18
+#@begin core/text-transform19 #@desc Text transform on cells in column id using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in id
+#@out id_1
+#@end core/text-transform19
+#@begin core/text-transform20 #@desc Text transform on cells in column id using expression value.trim()
+#@param expression:value.trim()
+#@in id_1
+#@out id_2
+#@end core/text-transform20
+#@begin core/text-transform21 #@desc Text transform on cells in column id using expression value.replace(/\\s+/,' ')
+#@param expression:value.replace(/\\s+/,'_')
+#@in id_2
+#@out id_3
+#@end core/text-transform21
+#@begin core/text-transform22 #@desc Text transform on cells in column name using expression grel:value.replace(/\\-/,'')
+#@param expression:grel:value.replace(/\\-/,'')
+#@in name_10
+#@out name_11
+#@end core/text-transform22
+#@begin CombineDataCleaningChanges
+#@in name_11
+#@in lowest_price_1
+#@in highest_price_1
+#@in last_appeared_2
+#@in first_appeared_2
+#@in times_appeared_1
+#@in menus_appeared_1
+#@in description
+#@in remove-description
+#@in id_3
+#@out CleanData
+#@end CombineDataCleaningChanges
+#@end Parallel_OR

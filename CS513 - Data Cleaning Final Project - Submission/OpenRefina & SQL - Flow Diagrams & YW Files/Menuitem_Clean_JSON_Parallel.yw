@@ -1,0 +1,63 @@
+#@begin Parallel_OR #@desc Parallel OpenRefine Workflow
+#@param expression:value.toDate()
+#@param expression:value.toNumber()
+#@in price
+#@in menu_page_id
+#@in high_price_1
+#@in high_price
+#@in dish_id
+#@in created_at
+#@in xpos
+#@in ypos
+#@out CleanData
+#@begin core/text-transform0 #@desc Text transform on cells in column price using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in price
+#@out price_1
+#@end core/text-transform0
+#@begin core/text-transform1 #@desc Text transform on cells in column high_price using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in high_price
+#@out high_price_1
+#@end core/text-transform1
+#@begin core/text-transform2 #@desc Text transform on cells in column high_price using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in high_price_1
+#@out high_price_2
+#@end core/text-transform2
+#@begin core/text-transform3 #@desc Text transform on cells in column dish_id using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in dish_id
+#@out dish_id_1
+#@end core/text-transform3
+#@begin core/text-transform4 #@desc Text transform on cells in column menu_page_id using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in menu_page_id
+#@out menu_page_id_1
+#@end core/text-transform4
+#@begin core/text-transform5 #@desc Text transform on cells in column created_at using expression value.toDate()
+#@param expression:value.toDate()
+#@in created_at
+#@out created_at_1
+#@end core/text-transform5
+#@begin core/text-transform6 #@desc Text transform on cells in column xpos using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in xpos
+#@out xpos_1
+#@end core/text-transform6
+#@begin core/text-transform7 #@desc Text transform on cells in column ypos using expression value.toNumber()
+#@param expression:value.toNumber()
+#@in ypos
+#@out ypos_1
+#@end core/text-transform7
+#@begin CombineDataCleaningChanges
+#@in price_1
+#@in high_price_2
+#@in dish_id_1
+#@in menu_page_id_1
+#@in created_at_1
+#@in xpos_1
+#@in ypos_1
+#@out CleanData
+#@end CombineDataCleaningChanges
+#@end Parallel_OR

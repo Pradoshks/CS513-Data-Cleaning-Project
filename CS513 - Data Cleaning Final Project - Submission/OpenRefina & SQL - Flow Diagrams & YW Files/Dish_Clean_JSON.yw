@@ -1,0 +1,164 @@
+#@begin Linear_OR #@desc Linear OpenRefine Workflow
+#@param col-name:lowest_price
+#@param expression:value.trim()
+#@param expression:value.toDate()
+#@param col-name:menus_appeared
+#@param expression:value.toNumber()
+#@param col-name:first_appeared
+#@param expression:value.toTitlecase()
+#@param expression:grel:value.replace(/\\-/,'')
+#@param expression:grel:value.replace(/\\?/,'')
+#@param expression:grel:value.replace(/\\*/,'')
+#@param col-name:name
+#@param col-name:last_appeared
+#@param expression:grel:value.replace(/\\[/,'').replace(/\\]/,'')
+#@param col-name:id
+#@param col-name:highest_price
+#@param expression:value.replace(/\\s+/,'_')
+#@param expression:grel:value.replace(/]/,'')
+#@param expression:grel:value.replace(/^\\,+/,'')
+#@param expression:grel:value.replace(/"/,'')
+#@param expression:value.toString()
+#@param col-name:times_appeared
+#@param col-name:description
+#@param expression:grel:toString(toDate(value),"yyyy")
+#@in table0
+#@out table23
+#@begin core/text-transform0#@desc Text transform on cells in column name using expression value.trim()
+#@param col-name:name
+#@param expression:value.trim()
+#@in table0
+#@out table1
+#@end core/text-transform0
+#@begin core/text-transform1#@desc Text transform on cells in column name using expression value.replace(/\\s+/,' ')
+#@param col-name:name
+#@param expression:value.replace(/\\s+/,'_')
+#@in table1
+#@out table2
+#@end core/text-transform1
+#@begin core/text-transform2#@desc Text transform on cells in column name using expression grel:value.replace(/\"/,'')
+#@param col-name:name
+#@param expression:grel:value.replace(/"/,'')
+#@in table2
+#@out table3
+#@end core/text-transform2
+#@begin core/text-transform3#@desc Text transform on cells in column name using expression grel:value.replace(/\\[/,'').replace(/\\]/,'')
+#@param col-name:name
+#@param expression:grel:value.replace(/\\[/,'').replace(/\\]/,'')
+#@in table3
+#@out table4
+#@end core/text-transform3
+#@begin core/text-transform4#@desc Text transform on cells in column name using expression grel:value.replace(/\\*/,'')
+#@param col-name:name
+#@param expression:grel:value.replace(/\\*/,'')
+#@in table4
+#@out table5
+#@end core/text-transform4
+#@begin core/text-transform5#@desc Text transform on cells in column name using expression grel:value.replace(/^\\,+/,'')
+#@param col-name:name
+#@param expression:grel:value.replace(/^\\,+/,'')
+#@in table5
+#@out table6
+#@end core/text-transform5
+#@begin core/text-transform6#@desc Text transform on cells in column name using expression grel:value.replace(/]/,'')
+#@param col-name:name
+#@param expression:grel:value.replace(/]/,'')
+#@in table6
+#@out table7
+#@end core/text-transform6
+#@begin core/text-transform7#@desc Text transform on cells in column lowest_price using expression value.toNumber()
+#@param col-name:lowest_price
+#@param expression:value.toNumber()
+#@in table7
+#@out table8
+#@end core/text-transform7
+#@begin core/text-transform8#@desc Text transform on cells in column highest_price using expression value.toNumber()
+#@param col-name:highest_price
+#@param expression:value.toNumber()
+#@in table8
+#@out table9
+#@end core/text-transform8
+#@begin core/text-transform9#@desc Text transform on cells in column last_appeared using expression value.toDate()
+#@param col-name:last_appeared
+#@param expression:value.toDate()
+#@in table9
+#@out table10
+#@end core/text-transform9
+#@begin core/text-transform10#@desc Text transform on cells in column last_appeared using expression grel:toString(toDate(value),\"yyyy\")
+#@param col-name:last_appeared
+#@param expression:grel:toString(toDate(value),"yyyy")
+#@in table10
+#@out table11
+#@end core/text-transform10
+#@begin core/text-transform11#@desc Text transform on cells in column first_appeared using expression value.toDate()
+#@param col-name:first_appeared
+#@param expression:value.toDate()
+#@in table11
+#@out table12
+#@end core/text-transform11
+#@begin core/text-transform12#@desc Text transform on cells in column first_appeared using expression grel:toString(toDate(value),\"yyyy\")
+#@param col-name:first_appeared
+#@param expression:grel:toString(toDate(value),"yyyy")
+#@in table12
+#@out table13
+#@end core/text-transform12
+#@begin core/text-transform13#@desc Text transform on cells in column times_appeared using expression value.toNumber()
+#@param col-name:times_appeared
+#@param expression:value.toNumber()
+#@in table13
+#@out table14
+#@end core/text-transform13
+#@begin core/text-transform14#@desc Text transform on cells in column menus_appeared using expression value.toNumber()
+#@param col-name:menus_appeared
+#@param expression:value.toNumber()
+#@in table14
+#@out table15
+#@end core/text-transform14
+#@begin core/column-removal0#@desc Remove column description
+#@param col-name:description
+#@in table15
+#@out table16
+#@end core/column-removal0
+#@begin core/text-transform15#@desc Text transform on cells in column name using expression value.toString()
+#@param col-name:name
+#@param expression:value.toString()
+#@in table16
+#@out table17
+#@end core/text-transform15
+#@begin core/text-transform16#@desc Text transform on cells in column name using expression grel:value.replace(/\\?/,'')
+#@param col-name:name
+#@param expression:grel:value.replace(/\\?/,'')
+#@in table17
+#@out table18
+#@end core/text-transform16
+#@begin core/text-transform17#@desc Text transform on cells in column name using expression value.toTitlecase()
+#@param col-name:name
+#@param expression:value.toTitlecase()
+#@in table18
+#@out table19
+#@end core/text-transform17
+#@begin core/text-transform18#@desc Text transform on cells in column id using expression value.toNumber()
+#@param col-name:id
+#@param expression:value.toNumber()
+#@in table19
+#@out table20
+#@end core/text-transform18
+#@begin core/text-transform19#@desc Text transform on cells in column id using expression value.trim()
+#@param col-name:id
+#@param expression:value.trim()
+#@in table20
+#@out table21
+#@end core/text-transform19
+#@begin core/text-transform20#@desc Text transform on cells in column id using expression value.replace(/\\s+/,' ')
+#@param col-name:id
+#@param expression:value.replace(/\\s+/,'_')
+#@in table21
+#@out table22
+#@end core/text-transform20
+#@begin core/text-transform21#@desc Text transform on cells in column name using expression grel:value.replace(/\\-/,'')
+#@param col-name:name
+#@param expression:grel:value.replace(/\\-/,'')
+#@in table22
+#@out table23
+#@end core/text-transform21
+#@end Linear_OR

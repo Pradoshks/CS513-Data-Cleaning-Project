@@ -1,0 +1,55 @@
+#@begin Linear_OR #@desc Linear OpenRefine Workflow
+#@param col-name:full_width
+#@param col-name:full_height
+#@param col-name:id
+#@param col-name:menu_id
+#@param col-name:page_number
+#@param expression:value.toLowercase()
+#@param col-name:image_id
+#@param expression:value.toNumber()
+#@param col-name:uuid
+#@in table0
+#@out table7
+#@begin core/text-transform0#@desc Text transform on cells in column id using expression value.toNumber()
+#@param col-name:id
+#@param expression:value.toNumber()
+#@in table0
+#@out table1
+#@end core/text-transform0
+#@begin core/text-transform1#@desc Text transform on cells in column menu_id using expression value.toNumber()
+#@param col-name:menu_id
+#@param expression:value.toNumber()
+#@in table1
+#@out table2
+#@end core/text-transform1
+#@begin core/text-transform2#@desc Text transform on cells in column page_number using expression value.toNumber()
+#@param col-name:page_number
+#@param expression:value.toNumber()
+#@in table2
+#@out table3
+#@end core/text-transform2
+#@begin core/text-transform3#@desc Text transform on cells in column image_id using expression value.toNumber()
+#@param col-name:image_id
+#@param expression:value.toNumber()
+#@in table3
+#@out table4
+#@end core/text-transform3
+#@begin core/text-transform4#@desc Text transform on cells in column full_height using expression value.toNumber()
+#@param col-name:full_height
+#@param expression:value.toNumber()
+#@in table4
+#@out table5
+#@end core/text-transform4
+#@begin core/text-transform5#@desc Text transform on cells in column full_width using expression value.toNumber()
+#@param col-name:full_width
+#@param expression:value.toNumber()
+#@in table5
+#@out table6
+#@end core/text-transform5
+#@begin core/text-transform6#@desc Text transform on cells in column uuid using expression value.toLowercase()
+#@param col-name:uuid
+#@param expression:value.toLowercase()
+#@in table6
+#@out table7
+#@end core/text-transform6
+#@end Linear_OR
